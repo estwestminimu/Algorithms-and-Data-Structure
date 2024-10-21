@@ -169,12 +169,6 @@ public:
         }
     }; // sortowanie listy
 
-    T& operator[](int pos)
-    {
-        // podstawienie L[pos]=item, odczyt L[pos]
-
-
-    };
 
     void erase(int pos){
         if(pos<0 || pos>=last)
