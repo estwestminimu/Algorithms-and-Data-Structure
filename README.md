@@ -14,3 +14,9 @@
 
 #### **Lekcja 5 - ADT LIST (lista podwójnie powiązana)**
 * [#1 Implementacja realizująca ADT LIST na bazie listy  powiązanej podwójnie](/lekcja_5/)
+
+#### **Lekcja 5 - ADT LIST (lista podwójnie powiązana)**
+* [#1 Implementacja realizująca ADT LIST na bazie listy  powiązanej podwójnie](/lekcja_5/)
+
+#### **Lekcja 6 - ADT DEQUE**
+* [#1 Implementacja realizująca ADT DEQUE na bazie tablicy o stałym rozmiarze ](/lekcja_6/)
