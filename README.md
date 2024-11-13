@@ -20,3 +20,6 @@
 
 #### **Lekcja 6 - ADT DEQUE**
 * [#1 Implementacja realizująca ADT DEQUE na bazie tablicy o stałym rozmiarze ](/lekcja_6/)
+
+#### **Lekcja 7 -  ADT STACK**
+* [#1 Zaimplementować algorytm obliczania wartości wyrażenia podanego w ONP](/lekcja_7/)
