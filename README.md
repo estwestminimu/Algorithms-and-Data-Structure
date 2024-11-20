@@ -23,3 +23,7 @@
 
 #### **Lekcja 7 -  ADT STACK**
 * [#1 Zaimplementować algorytm obliczania wartości wyrażenia podanego w ONP](/lekcja_7/)
+
+#### **Lekcja 8 -  ADT QUEUE**
+* [#1 Przygotować implementację realizującą ADT QUEUE na bazie dwóch stosów](/lekcja_8/)
+
