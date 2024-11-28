@@ -27,3 +27,7 @@
 #### **Lekcja 8 -  ADT QUEUE**
 * [#1 Przygotować implementację realizującą ADT QUEUE na bazie dwóch stosów](/lekcja_8/)
 
+
+#### **Lekcja 9 - ADT PRIORITY QUEUE**
+* [#1 rzygotować implementację realizującą ADT PRIORITY QUEUE na bazie std::vector i kopca z STL.](/lekcja_9/)
+
