@@ -1,122 +1,99 @@
-#ifndef MYPRIORITYQUEUE_H
-#define MYPRIORITYQUEUE_H
+#ifndef MyPriorityQueue_H
+#define MyPriorityQueue_H
 
-#include <vector>
-#include <algorithm>
+#include <forward_list>
 #include <iostream>
+#include <stdexcept>
 
-template <typename T>
+template<typename T>
 class MyPriorityQueue {
-    std::vector<T> lst; 
+    std::forward_list<T> lst;
+    std::size_t count;
+
 public:
-    
-    MyPriorityQueue(std::size_t s = 10) { lst.reserve(s); }
+    MyPriorityQueue() : count(0) {}
 
-    
-    ~MyPriorityQueue()
-    {
-        lst.clear();
-    }
-
-
-    MyPriorityQueue(const MyPriorityQueue& other) : lst(other.lst)
-    {
-
-    }
-
-
-    MyPriorityQueue(MyPriorityQueue&& other) noexcept : lst(std::move(other.lst))
-    {
-
-    }
-
-    
-    MyPriorityQueue& operator=(const MyPriorityQueue& other)
-    {
-        if (this != &other)
-        {
-            lst = other.lst;
-        }
-        return *this;
-    }
-
-    
-    MyPriorityQueue& operator=(MyPriorityQueue&& other) noexcept
-    {
-        if (this != &other)
-        {
-            lst = std::move(other.lst);
-        }
-        return *this;
-    }
-
-    
     bool empty() const {
         return lst.empty();
     }
 
-    
     std::size_t size() const {
-        return lst.size();
+        return count;
     }
 
-    
-    void push(const T& item)
-    {
-        lst.push_back(item);               
-        std::push_heap(lst.begin(), lst.end()); 
+    //O(n) bo petla po wszystkich elementach
+    void push(const T& item) {
+
+        auto set = lst.before_begin();//pozycja przed pierwszym elementem
+
+
+        for (auto i = lst.begin(); i != lst.end(); ++i, ++set) {//i wskazuje na pierwszy element listy
+            if (*i < item) {
+                lst.insert_after(set, item);//wstawiamy element tam gdzie set poniewaz wskazuje on na element wczesniejszy
+                ++count;
+                return;
+            }
+        }
+        lst.insert_after(set, item);//jesli jest najmniejszy to wstawiamy na sam koniec
+        ++count;
     }
 
-    
-    void push(T&& item)
-    {
-        lst.push_back(std::move(item));    
-        std::push_heap(lst.begin(), lst.end()); 
+    //analogicznie do poprzedniego
+    void push(T&& item) {
+        auto set = lst.before_begin();
+
+        for (auto i = lst.begin(); i != lst.end(); ++i, ++set) {
+            if (*i < item) {
+                lst.insert_after(set, std::move(item));
+                ++count;
+                return;
+            }
+        }
+
+        lst.insert_after(set, std::move(item));
+        ++count;
     }
 
-    
-    T& top() {
-        if (empty())
-        {
-            throw std::runtime_error("Empty!!!");
+    // Odczyt największego elementu
+    //O(1)
+    const T& top() const {
+        if (empty()) {
+            throw std::logic_error("Empty!!!");
         }
         return lst.front();
     }
 
-    
+    //O(1)
     void pop() {
-        if (empty())
-            {
-            throw std::runtime_error("Empty!!!");
+        if (empty()) {
+            throw std::logic_error("Empty!!!");
         }
-        std::pop_heap(lst.begin(), lst.end()); 
-        lst.pop_back();                        
+        --count;
+        lst.pop_front();
+
     }
 
-    
-    void clear()
-    {
+
+    void clear() noexcept {
+        count = 0;
         lst.clear();
     }
 
-    
-    void display() {
-        if (empty())
-        {
-            std::cout<<"Empty";
+    void display() const {
+        if (empty()) {
+            std::cout << "[ Empty ]" << std::endl;
         }
         else {
-            std::vector<T> temp = lst;
-            std::sort_heap(temp.begin(), temp.end());
-            for (const auto& el : temp) {
-                std::cout << el << " ";
+            std::cout<< "[ ";
+            for (const auto& item : lst) {
+                std::cout << item << " ";
             }
-            std::cout << std::endl;
+            std::cout<< "]";
 
+            std::cout << std::endl;
         }
 
     }
 };
 
-
-#endif 
+#endif

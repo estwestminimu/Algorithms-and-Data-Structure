@@ -29,5 +29,5 @@
 
 
 #### **Lekcja 9 - ADT PRIORITY QUEUE**
-* [#1 rzygotować implementację realizującą ADT PRIORITY QUEUE na bazie std::vector i kopca z STL.](/lekcja_9/)
+* [#3 Przygotować prostą implementację realizującą ADT PRIORITY QUEUE na bazie listy powiązanej pojedynczo.](/lekcja_9/)
 

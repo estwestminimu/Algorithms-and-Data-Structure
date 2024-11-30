@@ -9,8 +9,8 @@ int main() {
     test.push(1);
     test.push(2);
     assert(test.top() == 2);
-    test.push(3);
     test.push(4);
+    test.push(3);
     assert(test.top() == 4);
 
 
@@ -18,7 +18,10 @@ int main() {
 
     test.pop();
     assert(test.top() == 3);
-
+    test.push(10);
+    test.push(9);
+    assert(test.top() == 10);
+    test.display();
     test.clear();
     assert(test.empty());
 
