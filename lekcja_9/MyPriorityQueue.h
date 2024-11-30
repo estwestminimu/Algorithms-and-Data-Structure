@@ -23,9 +23,7 @@ public:
 
     //O(n) bo petla po wszystkich elementach
     void push(const T& item) {
-
         auto set = lst.before_begin();//pozycja przed pierwszym elementem
-
 
         for (auto i = lst.begin(); i != lst.end(); ++i, ++set) {//i wskazuje na pierwszy element listy
             if (*i < item) {
@@ -43,7 +41,8 @@ public:
         auto set = lst.before_begin();
 
         for (auto i = lst.begin(); i != lst.end(); ++i, ++set) {
-            if (*i < item) {
+            if (*i < item)
+            {
                 lst.insert_after(set, std::move(item));
                 ++count;
                 return;
@@ -57,7 +56,8 @@ public:
     // Odczyt największego elementu
     //O(1)
     const T& top() const {
-        if (empty()) {
+        if (empty())
+        {
             throw std::logic_error("Empty!!!");
         }
         return lst.front();
@@ -65,7 +65,8 @@ public:
 
     //O(1)
     void pop() {
-        if (empty()) {
+        if (empty())
+        {
             throw std::logic_error("Empty!!!");
         }
         --count;
@@ -73,8 +74,7 @@ public:
 
     }
 
-
-    void clear() noexcept {
+    void clear() {
         count = 0;
         lst.clear();
     }
@@ -89,10 +89,8 @@ public:
                 std::cout << item << " ";
             }
             std::cout<< "]";
-
             std::cout << std::endl;
         }
-
     }
 };
 

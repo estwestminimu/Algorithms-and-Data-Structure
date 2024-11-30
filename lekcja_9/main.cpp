@@ -1,5 +1,4 @@
 #include <cassert>
-
 #include "MyPriorityQueue.h"
 #include <iostream>
 
@@ -12,7 +11,6 @@ int main() {
     test.push(4);
     test.push(3);
     assert(test.top() == 4);
-
 
     test.display();
 
