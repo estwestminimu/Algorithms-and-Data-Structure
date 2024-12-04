@@ -31,3 +31,7 @@
 #### **Lekcja 9 - ADT PRIORITY QUEUE**
 * [#3 Przygotować prostą implementację realizującą ADT PRIORITY QUEUE na bazie listy powiązanej pojedynczo.](/lekcja_9/)
 
+#### **Lekcja 9 - ADT TREE**
+* [#10.1 Napisać funkcję calc_leaves(), która zlicza liście drzewa binarnego. Stworzyć dwie wersje: rekurencyjną i iteracyjną..](/lekcja_10/)
+* [#10.2 Napisać funkcję calc_total(), która podaje sumę liczb przechowywanych w drzewie..](/lekcja_10/)
+
