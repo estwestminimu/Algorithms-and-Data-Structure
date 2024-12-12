@@ -35,3 +35,7 @@
 * [#10.1 Napisać funkcję calc_leaves(), która zlicza liście drzewa binarnego. Stworzyć dwie wersje: rekurencyjną i iteracyjną..](/lekcja_10/)
 * [#10.2 Napisać funkcję calc_total(), która podaje sumę liczb przechowywanych w drzewie..](/lekcja_10/)
 
+#### **Lekcja 11 - drzewa BST**
+* [#11.4 Napisać funkcję sprawdzającą, czy drzewo binarne jest drzewem BST.](/lekcja_11/)
+
+
