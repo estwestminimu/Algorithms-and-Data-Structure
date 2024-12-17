@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cassert>
+#include <climits>
 
 template<typename T>
 struct BSTNode {
@@ -38,7 +39,9 @@ public:
     }
 
     T *iter_search(const T &item) const {
-        for (auto node = root; !node;) {
+        auto node = root;
+
+        while (node) {
             if (item == node->value) {
                 return &(node->value);
             }
@@ -48,6 +51,7 @@ public:
                 node = node->right;
             }
         }
+
         return nullptr;
     }
 
@@ -57,7 +61,7 @@ public:
     }
 
     bool isBST() {
-        return isBSTRecursive(root, top(), top());
+        return isBSTRecursive(root, INT_MIN, INT_MAX);
     }
 
     void setRoot(BSTNode<T> *newRoot) {
@@ -68,15 +72,17 @@ public:
     BSTNode<T> *getRoot() const {
         return root;
     }
-    T* find_min() {
-        BSTNode<T>* node = root;
+
+    T *find_min() {
+        BSTNode<T> *node = root;
         while (node != nullptr && node->left != nullptr) {
             node = node->left;
         }
         return node ? &(node->value) : nullptr;
     }
-    T* find_max() {
-        BSTNode<T>* node = root;
+
+    T *find_max() {
+        BSTNode<T> *node = root;
         while (node != nullptr && node->right != nullptr) {
             node = node->right;
         }
@@ -98,24 +104,28 @@ public:
         display(node->left, level + 1);
     }
 
-private:
-    BSTNode<T> *insert(BSTNode<T> *node, const T &item) {
-
+    private:
+        BSTNode<T> *insert(BSTNode<T> *node, const T &item) {
         if (!node) return new BSTNode<T>(item);
-        node->left = (item < node->value) ? insert(node->left, item) : node->left;
-        node->right = (item >= node->value) ? insert(node->right, item) : node->right;
-
+        if (item < node->value) {
+            node->left = insert(node->left, item);
+        } else if (item > node->value) {
+            node->right = insert(node->right, item);
+        }
         return node;
     }
 
+    BSTNode<T> *search(BSTNode<T> *node, const T &item) const {
+        if (!node || node->value == item) return node;
+        if (item < node->value) return search(node->left, item);
+        return search(node->right, item);
+    }
+
     bool isBSTRecursive(BSTNode<T> *node, T minVal, T maxVal) {
-
         if (!node) return true;
-        if (node->value >= maxVal || node->value <= minVal) return false;
+        if (node->value <= minVal || node->value >= maxVal) return false;
 
-        bool left = isBSTRecursive(node->left, minVal, node->value);
-        bool right = isBSTRecursive(node->right, node->value, maxVal);
-
-        return left && right;
+        return isBSTRecursive(node->left, minVal, node->value) &&
+               isBSTRecursive(node->right, node->value, maxVal);
     }
 };
