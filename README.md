@@ -1,5 +1,13 @@
 # **Rozwiązania**
 
+
+### **Projekt -  Wyznaczanie otoczki wypukłej quickhull.**
+* [Kod](/Projekt/)
+* [Dokumentacja](/Projekt/Quickhull%20-%20Szymon%20Tomaszewski.pdf)
+
+
+
+
 #### **Lekcja 2 - sortowanie**
 * [#1 Implementacja dwóch algorytmów sortowania w C++](/Lekcja_2/)
 >[!NOTE]
@@ -7,7 +15,6 @@
 
 #### **Lekcja 3 - ADT LIST**
 * [#1 Implementacja realizująca ADT LIST na bazie tablicy w C++](/lekcja_3/)
-
 
 #### **Lekcja 4 - ADT LIST lista pojedynczo powiązana**
 * [#1 Implementacja realizująca ADT LIST na bazie listy powiązanej pojedynczo & length O(1)](/lekcja_4/)
@@ -26,7 +33,6 @@
 
 #### **Lekcja 8 -  ADT QUEUE**
 * [#1 Przygotować implementację realizującą ADT QUEUE na bazie dwóch stosów](/lekcja_8/)
-
 
 #### **Lekcja 9 - ADT PRIORITY QUEUE**
 * [#3 Przygotować prostą implementację realizującą ADT PRIORITY QUEUE na bazie listy powiązanej pojedynczo.](/lekcja_9/)
