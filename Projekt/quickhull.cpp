@@ -61,6 +61,8 @@ void quickHullHelper(const std::vector<Point>& points, const Point& A, const Poi
     //Okreslamy najdalszy punkty
     Point F = findFarthestPoint(points, A, B);
     hull.push_back(F);//Tutaj sa zapisywane punkty otoczki
+    std::cout<<"F: "<<F.x<<" "<<F.y<<"\n";
+
 
     //lewe strony punktow dla linii AF i FB
     std::vector<Point> left_AF, left_FB;
@@ -94,27 +96,34 @@ std::vector<Point> quickHull(const std::vector<Point>& points) {
 
 
     // Sortowanie punktów - w celu znalezienia najbardziej oddalonych punktów - os x
-    std::vector<Point> sortedPoints = points;
-    std::sort(sortedPoints.begin(), sortedPoints.end(), compare);
+  //  std::vector<Point> copy = points;
 
     //Znajdujemy najdalej odległe punkty - one na pewno naleza do otoczki
-    Point A = sortedPoints.front();
-    Point B = sortedPoints.back();
-    hull.push_back(A);
-    hull.push_back(B);
+    //Point A = sortedPoints.front();
+    //Point B = sortedPoints.back();
+    //hull.push_back(A);
+    //hull.push_back(B);
 
+    //uzycie funkcji minmax_element
+    auto [minIt, maxIt] = std::minmax_element(points.begin(), points.end(), compare);
+
+
+    Point A = *minIt;
+    Point B = *maxIt;
+
+    hull.push_back(A);
+    std::cout<<"A: "<<A.x<<" "<<A.y<<"\n";
+    hull.push_back(B);
+    std::cout<<"B: "<<B.x<<" "<<B.y<<"\n";
 
 
     //Rozdzielamy punkty na lewe i prawe wzgledem AB
     std::vector<Point> left, right;
-    getSides(sortedPoints, A, B, left, right);
+    getSides(points, A, B, left, right);
 
     quickHullHelper(left, A, B, hull);
     quickHullHelper(right, B, A, hull);
 
-    // Usunięcie duplikatów
-    std::sort(hull.begin(), hull.end(), compare);
-    hull.erase(std::unique(hull.begin(), hull.end()), hull.end());
 
     return hull;
 }
