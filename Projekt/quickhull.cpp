@@ -8,9 +8,9 @@ double distance(const Point& A, const Point& B, const Point& P) {
     //Pole rownloegloboku
     double numerator = std::abs((P.y - A.y) * (B.x - A.x) - (B.y - A.y) * (P.x - A.x));
     //Liczone z Pitagorasa
-    double denominator = std::sqrt(std::pow(B.x - A.x, 2) + std::pow(B.y - A.y, 2));
+  //  double denominator = std::sqrt(std::pow(B.x - A.x, 2) + std::pow(B.y - A.y, 2));
 
-    return numerator / denominator;
+    return numerator ;
 }
 
 // Porównuje punkty według X, a w razie równości według Y
